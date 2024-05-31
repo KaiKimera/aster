@@ -1,0 +1,16 @@
+body {
+  font-family: 'Times New Roman', 'Georgia', 'Times', serif;
+}
+
+.room > .list-group {
+  height: 16rem;
+  overflow: auto;
+}
+
+.phone .btn {
+  display: none;
+}
+
+.phone:hover .btn {
+  display: block;
+}
