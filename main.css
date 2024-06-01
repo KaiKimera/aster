@@ -2,15 +2,15 @@ body {
   font-family: 'Times New Roman', 'Georgia', 'Times', serif;
 }
 
-.room > .list-group {
+.ext-room > .list-group {
   height: 16rem;
   overflow: auto;
 }
 
-.phone .btn {
+.ext-user .btn {
   display: none;
 }
 
-.phone:hover .btn {
+.ext-user:hover .btn {
   display: block;
 }
