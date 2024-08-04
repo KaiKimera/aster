@@ -4,8 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
   $roomControl('form.user-kick');
 });
 
-const $loadUsers = ($element) => {
-  document.querySelectorAll($element).forEach(($i) => {
+const $loadUsers = ($selector) => {
+  const $element = document.querySelectorAll($selector);
+
+  $element.forEach(($i) => {
     const $id = $i.dataset.room;
     const $card = `#room-${$id} .card-body`;
     const $users = `user.list.php?room=${$id}`;
@@ -20,11 +22,21 @@ const $loadUsers = ($element) => {
   });
 };
 
-const $roomControl = ($element) => {
-  document.querySelector($element).addEventListener('submit', ($e) => {
+const $roomControl = ($selector) => {
+  const $element = document.querySelector($selector);
+
+  if (!$element) {
+    console.log(`Element '${$selector}' not found!`);
+    return null;
+  }
+
+  $element.addEventListener('submit', ($e) => {
     const $form = this;
     const $data = new FormData($form);
     const $body = new URLSearchParams($data).toString();
+    const $button = $form.querySelector('button[type="submit"]');
+
+    $e.preventDefault();
 
     fetch($form.getAttribute('action'), {
       method: $form.getAttribute('method'),
@@ -33,9 +45,6 @@ const $roomControl = ($element) => {
       headers: {'Cache-Control': 'no-cache'}
     }).then($response => $response.text());
 
-    $e.preventDefault();
-
-    const $button = $form.querySelector('button[type="submit"]');
     $button.disabled = true;
     setTimeout(function () {
       $button.disabled = false;
