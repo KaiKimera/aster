@@ -6,7 +6,7 @@ $n = 0;
 <?php for ($i = 0; $i < $count; $i++): ?>
 
   <?php
-  $n = escapeshellarg($n + 1);
+  $n = $n + 1;
   $room = (int)shell_exec(getcwd() . "/room.name.sh '" . $n . "'");
   ?>
   <div class="col">
@@ -29,7 +29,7 @@ $n = 0;
         <form class="user-kick" action="user.kick.php" method="post">
           <input type="hidden" name="room" value="<?php echo $room; ?>">
           <div class="input-group">
-            <input type="number" class="form-control" name="user" min="0" step="1"
+            <input class="form-control" type="number" name="user" min="0" step="1"
                    placeholder="<?php echo $i18n['user.kick.placeholder']; ?>"
                    aria-label="<?php echo $i18n['user.id']; ?>" required>
             <button title="<?php echo $i18n['user.kick']; ?>" type="submit" class="btn btn-outline-danger">

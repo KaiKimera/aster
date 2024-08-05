@@ -23,31 +23,23 @@ const $loadUsers = ($selector) => {
 };
 
 const $roomControl = ($selector) => {
-  const $element = document.querySelector($selector);
+  const $element = document.querySelectorAll($selector);
+  $element.forEach(($i) => {
+    $i.addEventListener('submit', function ($e) {
+      const $form = this;
+      const $button = $form.querySelector('button[type="submit"]');
 
-  if (!$element) {
-    console.log(`Element '${$selector}' not found!`);
-    return null;
-  }
+      $e.preventDefault();
 
-  $element.addEventListener('submit', ($e) => {
-    const $form = this;
-    const $data = new FormData($form);
-    const $body = new URLSearchParams($data).toString();
-    const $button = $form.querySelector('button[type="submit"]');
+      fetch($form.getAttribute('action'), {
+        method: $form.getAttribute('method'),
+        body: new FormData($form)
+      }).then($response=>$response.text());
 
-    $e.preventDefault();
-
-    fetch($form.getAttribute('action'), {
-      method: $form.getAttribute('method'),
-      body: $body,
-      cache: 'no-cache',
-      headers: {'Cache-Control': 'no-cache'}
-    }).then($response => $response.text());
-
-    $button.disabled = true;
-    setTimeout(function () {
-      $button.disabled = false;
-    }, 5000);
+      $button.disabled = true;
+      setTimeout(function () {
+        $button.disabled = false;
+      }, 5000);
+    });
   });
-};
+}

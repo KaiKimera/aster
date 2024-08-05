@@ -1,7 +1,7 @@
 <!doctype html>
 <?php
 $srvIp = getHostByName(getHostName());
-$i18n = $_GET['lang'] ?? 'ru';
+$i18n = isset($_GET['lang']) ? $_GET['lang'] : 'ru';
 $i18n = require 'i18n/' . $i18n . '.php';
 ?>
 <html class="h-100" lang="en" data-bs-theme="auto">
