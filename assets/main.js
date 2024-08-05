@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const $loadUsers = ($selector) => {
   const $element = document.querySelectorAll($selector);
 
-  $element.forEach(($i) => {
+  $element.forEach($i => {
     const $id = $i.dataset.room;
     const $card = `#room-${$id} .card-body`;
     const $users = `user.list.php?room=${$id}`;
@@ -24,7 +24,7 @@ const $loadUsers = ($selector) => {
 
 const $roomControl = ($selector) => {
   const $element = document.querySelectorAll($selector);
-  $element.forEach(($i) => {
+  $element.forEach($i => {
     $i.addEventListener('submit', function ($e) {
       const $form = this;
       const $button = $form.querySelector('button[type="submit"]');
