@@ -1,13 +1,13 @@
 <?php
 $count = (int)shell_exec(getcwd() . '/room.count.sh');
-$n = 0;
+$x = 0;
 ?>
 
 <?php for ($i = 0; $i < $count; $i++): ?>
 
   <?php
-  $n = $n + 1;
-  $room = (int)shell_exec(getcwd() . "/room.name.sh '" . $n . "'");
+  $x++;
+  $room = (int)shell_exec(getcwd() . "/room.name.sh '" . $x . "'");
   ?>
   <div class="col">
     <div class="card room" id="room-<?php echo $room; ?>" data-room="<?php echo $room; ?>">
@@ -29,7 +29,7 @@ $n = 0;
         <form class="user-kick" action="user.kick.php" method="post">
           <input type="hidden" name="room" value="<?php echo $room; ?>">
           <div class="input-group">
-            <input class="form-control" type="number" name="user" min="0" step="1"
+            <input class="form-control" type="number" name="user" min="1" step="1"
                    placeholder="<?php echo $i18n['user.kick.placeholder']; ?>"
                    aria-label="<?php echo $i18n['user.id']; ?>" required>
             <button class="btn btn-outline-danger" type="submit" title="<?php echo $i18n['user.kick']; ?>">
