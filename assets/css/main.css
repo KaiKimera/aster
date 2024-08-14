@@ -32,6 +32,6 @@ body code {
 
 body .card-body {
   font-family: 'PT Serif', 'Times New Roman', 'Georgia', 'Times', serif;
-  height: 16rem;
+  height: 15rem;
   overflow: auto;
 }

@@ -9,6 +9,8 @@ _cmd_exists() {
 
 asterisk="$( command -v 'asterisk' )"; _cmd_exists 'asterisk'
 
+${asterisk} -x "core reload"
 ${asterisk} -x "core restart now"
+${asterisk} -x "core stop now"
 
 exit 0

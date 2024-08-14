@@ -14,7 +14,7 @@ $i18n = require 'i18n/' . $i18n . '.php';
   </div>
 </main>
 <footer class="mt-auto border-top bg-body-tertiary"><?php require 'index.footer.php'; ?></footer>
-<script src="assets/bootstrap.bundle.min.js" defer></script>
-<script src="assets/main.min.js" defer></script>
+<script src="assets/js/bootstrap.bundle.min.js" defer></script>
+<script src="assets/js/main.min.js" defer></script>
 </body>
 </html>
