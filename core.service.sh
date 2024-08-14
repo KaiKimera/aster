@@ -8,9 +8,15 @@ _cmd_exists() {
 }
 
 asterisk=$( command -v 'asterisk' ); _cmd_exists 'asterisk'
-awk=$( command -v 'awk' ); _cmd_exists 'awk'
-sed=$( command -v 'sed' ); _cmd_exists 'sed'
+cmd=''
 
-${asterisk} -x "meetme list ${1}" | ${awk} '{ print $3 "/" $4 }' | ${sed} '$d'
+case "${1}" in
+  'reload') cmd='reload' ;;
+  'restart') cmd='restart now' ;;
+  'stop') cmd='stop now' ;;
+  *) echo 'Command is not supported!' && exit 1 ;;
+esac
+
+${asterisk} -x "core ${cmd}"
 
 exit 0

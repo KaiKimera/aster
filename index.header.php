@@ -9,9 +9,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navTopBar">
       <ul class="navbar-nav ms-auto">
-        <?php if ($_SERVER['PHP_AUTH_USER'] == 'root'): ?>
-          <?php require 'index.menu.power.php'; ?>
-        <?php endif; ?>
+        <?php require __DIR__ . '/index.service.php'; ?>
       </ul>
     </div>
   </div>

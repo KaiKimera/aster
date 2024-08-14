@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   $getUsers('div.room');
-  $roomControl('form.room-kick');
-  $roomControl('form.user-kick');
+  $formControl('form.room-kick');
+  $formControl('form.user-kick');
+  $urlControl('.core-power');
 });
 
 // ------------------------------------------------------------------------------------------------------------------ //
@@ -27,10 +28,10 @@ const $getUsers = ($selector) => {
 };
 
 // ------------------------------------------------------------------------------------------------------------------ //
-// ROOM CONTROL
+// FORM CONTROL
 // ------------------------------------------------------------------------------------------------------------------ //
 
-const $roomControl = ($selector) => {
+const $formControl = ($selector) => {
   const $el = document.querySelectorAll($selector);
   const $len = $el.length;
 
@@ -44,9 +45,29 @@ const $roomControl = ($selector) => {
 
       fetch($action, {
         method: $method, body: $body
-      }).then($response => $response.text());
+      }).then(($response) => $response.text());
 
       $_lockUnlock($button);
+      $e.preventDefault();
+    });
+  }
+}
+
+// ------------------------------------------------------------------------------------------------------------------ //
+// URL CONTROL
+// ------------------------------------------------------------------------------------------------------------------ //
+
+const $urlControl = ($selector) => {
+  const $el = document.querySelectorAll($selector);
+  const $len = $el.length;
+
+  for (let $i = 0; $i < $len; ++$i) {
+    $el[$i].addEventListener('click', function ($e) {
+      const $url = this;
+      const $action = $url.getAttribute('href');
+
+      fetch($action).then(($response) => $response.text());
+
       $e.preventDefault();
     });
   }

@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="theme-color" content="#f8f9fa" media="(prefers-color-scheme: light)">
-<script src="assets/theme.min.js"></script>
+<script src="assets/js/theme.min.js"></script>
 <title><?php echo $i18n['conferences']; ?> / <?php echo $i18n['asterisk']; ?> <?php echo $srvIp; ?></title>
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/fonts.fa.min.css">
