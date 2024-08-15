@@ -5,7 +5,7 @@ function isNumeric($data)
   return filter_var($data, FILTER_VALIDATE_INT) !== false;
 }
 
-if (!isNumeric($_GET['room'])) {
+if (!isset($_GET['room']) || !isNumeric($_GET['room'])) {
   echo 'Room number is not correct!';
   exit(1);
 }
