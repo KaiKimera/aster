@@ -13,9 +13,8 @@ if (!isset($_GET['room']) || !isNumeric($_GET['room'])) {
 $room = (int)$_GET['room'];
 $users = shell_exec(getcwd() . '/user.list.sh ' . escapeshellarg($room));
 $users = array_filter(explode("\n", $users));
-?>
 
-<?php foreach ($users as $user): ?>
+foreach ($users as $user): ?>
 
   <?php
   $user = explode('/', $user);
