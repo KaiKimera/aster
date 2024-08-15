@@ -1,18 +1,6 @@
 <!doctype html>
 
 <?php
-$dbUsers = require __DIR__ . '/db.users.php';
-$aUsers = array_keys($dbUsers);
-$aUser = $_SERVER['PHP_AUTH_USER'];
-$aPass = $_SERVER['PHP_AUTH_PW'];
-$aVerification = (in_array($aUser, $aUsers)) && ($aPass == $dbUsers[$aUser]);
-
-if (!$aVerification) {
-  header('WWW-Authenticate: Basic realm="Asterisk Rooms"');
-  header('HTTP/1.0 401 Unauthorized');
-  die ('You must enter a valid login ID and password to access this resource!');
-}
-
 $srvIp = getHostByName(getHostName());
 $i18n = isset($_GET['lang']) ? $_GET['lang'] : 'ru';
 $i18n = require __DIR__ . '/i18n/' . $i18n . '.php';
